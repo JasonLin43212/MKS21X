@@ -1,11 +1,15 @@
 public class SuperArray{
 
-  public String[] data;
+  private String[] data;
   private int size;
 
   public SuperArray(){
-      data = new String[10];
-      size = 0;
+    this(10);
+  }
+
+  public SuperArray(int startingCapacity){
+    data = new String[startingCapacity];
+    size = 0;
   }
 
   public void clear(){
@@ -22,16 +26,9 @@ public class SuperArray{
   }
 
   public boolean add(String element){
-    if (data.length == size()){
-      resize();
-      data[size()]= element;
-    }
-    else {
-      data[size()] = element;
-    }
-    size++;
+    add(size(),element);
     return true;
-   }
+  }
 
   public String toString(){
     String str = "[";
@@ -47,22 +44,14 @@ public class SuperArray{
 
   public String get(int index){
     if (index>=size() || index<0){
-      System.out.println("Error: Index out of range." +
-                         "(Index Range: 0-"+
-                         (size()-1) +
-                         ", Requested Index:"+ index+ ")");
-      return null;
+      throw new IndexOutOfBoundsException();
     }
     return data[index];
   }
 
   public String set(int index, String element){
     if (index>=size() || index<0){
-      System.out.println("Error: Index out of range." +
-                         "(Index Range: 0-"+
-                         (size()-1) +
-                         ", Requested Index:"+ index+ ")");
-      return null;
+      throw new IndexOutOfBoundsException();
     }
     String oldElement = data[index];
     data[index] = element;
@@ -70,7 +59,7 @@ public class SuperArray{
   }
   //Phase 2
   private void resize(){
-    String[] newData = new String[2*size()];
+    String[] newData = new String[2*size()+1];
     for (int i=0;i<data.length;i++){
       newData[i] = data[i];
     }
@@ -106,38 +95,23 @@ public class SuperArray{
   }
 
   public void add(int index, String element){
-    if (index>=size() || index<0){
-      System.out.println("Error: Index out of range." +
-                         "(Index Range: 0-"+
-                         (size()-1) +
-                         ", Requested Index:"+ index+ ")");
+    if (index>size() || index<0){
+      throw new IndexOutOfBoundsException();
     }
     if (size() == data.length){
       resize();
     }
-    String[] newData = new String[data.length];
-    for (int i=0;i<size();i++){
-      if (i<index){
-        newData[i] = data[i];
-      }
-      else if (i == index){
-        newData[i] = element;
-        size++;
-      }
-      else {
-        newData[i] = data[i-1];
-      }
+
+    for (int i=size();i>index;i--){
+      data[i]=data[i-1];
     }
-    data = newData;
+    data[index] = element;
+    size++;
   }
 
   public String remove(int index){
     if (index>=size() || index<0){
-      System.out.println("Error: Index out of range." +
-                         "(Index Range: 0-"+
-                         (size()-1) +
-                         ", Requested Index:"+ index+ ")");
-      return null;
+      throw new IndexOutOfBoundsException();
     }
     String oldElement = data[index];
     String[] newData = new String[data.length];
