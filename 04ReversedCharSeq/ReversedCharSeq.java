@@ -1,38 +1,46 @@
 public class ReversedCharSeq implements CharSequence {
 
-    public static void main(String[]args){
-	ReversedCharSeq a = new ReversedCharSeq("Hello");
-
-	System.out.println(a.data);
-    }
-
-    public String data;
+  public static void main(String[]args){
+    ReversedCharSeq a = new ReversedCharSeq("Hello");
+    ReversedCharSeq b = new ReversedCharSeq(a);
     
-    public ReversedCharSeq (String str) {
-	for (int i=str.length()-2; i>=0; i--) {
-	    data += str.substring(i,i+1);
-	}				
-    }
+    System.out.println(a);//olleH
+    System.out.println(b);//Hello
+    System.out.println(a.charAt(3));//e
+    System.out.println(a.length());//5
+    System.out.println(a.toString());//olleH
+    System.out.println(a.subSequence(2,4));//le
+    System.out.println(a.subSequence(0,3));//oll
+    System.out.println(a);//olleH
+  }
 
-     public ReversedCharSeq (reversedCharSeq str) {
-	for (int i=str.length()-2; i>=0; i--) {
-	    data += str.substring(i,i+1);
-	}				
-    }
-    
-    public char charAt(int index){
-	return data.charAt(index);
-    }
+  private String data = "";
 
-    public int length(){
-	return data.length();
+  public ReversedCharSeq (String str) {
+    for (int i=str.length()-1; i>=0; i--) {
+      data += str.substring(i,i+1);
     }
+  }
 
-    public String toString(){
-	return data;
-    }
+  public ReversedCharSeq (ReversedCharSeq seq) {
+    this(seq.toString());
+  }
 
-    public CharSequence subSequence(int start, int end) {
-	return (CharSequence) data.substring(start,end);
-    }
+  public char charAt(int index){
+    return data.charAt(index);
+  }
+
+  public int length(){
+    return data.length();
+  }
+
+  public String toString(){
+    return data;
+  }
+
+  public ReversedCharSeq subSequence(int start, int end) {
+    String sliced = data.substring(start,end);
+    ReversedCharSeq normalSlice = new ReversedCharSeq(sliced);
+    return new ReversedCharSeq(normalSlice);
+  }
 }
