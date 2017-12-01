@@ -1,4 +1,4 @@
-public interface SuperArrayIterator implements Iterator<String>{
+public class SuperArrayIterator implements Iterator<String>{
   private SuperArray data;
   private currentIndex;
 
