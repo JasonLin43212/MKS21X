@@ -1,6 +1,8 @@
+import java.util.Iterator;
+
 public class SuperArrayIterator implements Iterator<String>{
   private SuperArray data;
-  private currentIndex;
+  private int currentIndex;
 
   public SuperArrayIterator(SuperArray a) {
     data = a;
