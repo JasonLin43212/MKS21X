@@ -27,7 +27,7 @@ public class OrderedSuperArray extends SuperArray{
     return true;
 
   }
-  //regualr method
+  //regular method
   private int findIndex(String value){
     for (int i=0;i<size();i++){
       if (value.compareTo(get(i))<=0){

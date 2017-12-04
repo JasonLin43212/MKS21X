@@ -31,6 +31,10 @@ public class WordSearch{
       //checking rows format
       try{
         row = Integer.parseInt(args[0]);
+        if (row <= 0){
+           System.out.println("\nYour argument for <rows> is formatted incorrectly. Fix it! (Positive Integer)");
+           System.exit(1);
+        }
       }catch (NumberFormatException e){
         System.out.println("\nYour argument for <rows> is formatted incorrectly. Fix it! (Positive Integer)");
         System.exit(1);
@@ -39,6 +43,10 @@ public class WordSearch{
       //checking cols format
       try{
         column = Integer.parseInt(args[1]);
+        if (column <= 0){
+          System.out.println("\nYour argument for <cols> is formatted incorrectly. Fix it! (Positive Integer)");
+          System.exit(1);
+        }
       }catch (NumberFormatException e){
         System.out.println("\nYour argument for <cols> is formatted incorrectly. Fix it! (Positive Integer)");
         System.exit(1);
