@@ -1,15 +1,28 @@
-public class Barcode{
+import java.util.*;
+import java.io.*;
+
+public class Barcode implements Comparable<Barcode>{
   private String zip;
 
   public Barcode(String zip){
-    this.zip = zip;
+    if (zip.length() == 5){
+      for (int i=0; i<zip.length();i++){
+        if (!Character.isDigit(zip.charAt(i))){
+          throw new IllegalArgumentException();
+        }
+      }
+      this.zip = zip;
+    }
+    else {
+      throw new IllegalArgumentException();
+    }
   }
 
   public String getZip(){
     return zip;
   }
 
-  private int getCheckSum(){
+  private static int getCheckSum(String zip){
     int sum = 0;
     for (int i=0; i<zip.length(); i++){
       sum += Integer.parseInt(zip.substring(i,i+1));
@@ -18,7 +31,7 @@ public class Barcode{
   }
 
   public String getCode(){
-    String num = zip + getCheckSum();
+    String num = zip + getCheckSum(zip);
     String output = "|";
     for (int i=0; i<num.length();i++){
       output += convert(num.substring(i,i+1));
@@ -27,7 +40,7 @@ public class Barcode{
     return output;
   }
 
-  private String convert(String str){
+  private static String convert(String str){
     String[] conversion = {"||:::",":::||","::|:|","::||:",":|::|",":|:|:",":||::","|:::|","|::|:","|:|::"};
     return conversion[Integer.parseInt(str)];
   }
@@ -42,5 +55,25 @@ public class Barcode{
 
   public boolean equals(Barcode other){
     return zip.equals(other.getZip());
+  }
+
+  public static String toCode(String zip){
+     if (zip.length() == 5){
+      for (int i=0; i<zip.length();i++){
+        if (!Character.isDigit(zip.charAt(i))){
+          throw new IllegalArgumentException();
+        }
+      }
+    }
+    else {
+      throw new IllegalArgumentException();
+    }
+    String num = zip + getCheckSum(zip);
+    String output = "|";
+    for (int i=0; i<num.length();i++){
+      output += convert(num.substring(i,i+1));
+    }
+    output += "|";
+    return output;
   }
 }
