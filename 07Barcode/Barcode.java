@@ -76,4 +76,35 @@ public class Barcode implements Comparable<Barcode>{
     output += "|";
     return output;
   }
+
+  public static String codeToNumber(String code){
+    String[] conversion = {"||:::",":::||","::|:|","::||:",":|::|",":|:|:",":||::","|:::|","|::|:","|:|::"};
+    for (int i=0;i<conversion.length;i++){
+      if (code.equals(conversion[i])){
+        return i+"";
+      }
+    }
+    throw new IllegalArgumentException();
+  }
+
+  public static String toZip(String code){
+    if (code.length() != 32){
+      throw new IllegalArgumentException();
+    }
+    if (!(code.charAt(0)=='|' && code.charAt(31)=='|')){
+      throw new IllegalArgumentException();
+    }
+    String number = "";
+    for (int i=1;i<27;i+=5){
+      number += codeToNumber(code.substring(i,i+5));
+    }
+    int sum = 0;
+    for (int i=0;i<5;i++){
+      sum += Integer.parseInt(number.substring(i,i+1));
+    }
+    if (sum % 10 == Integer.parseInt(number.substring(5,6))){
+      return number.substring(0,5);
+    }
+    throw new IllegalArgumentException();
+  }
 }
