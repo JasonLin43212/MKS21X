@@ -3,6 +3,7 @@ import java.io.*;
 
 public class Barcode implements Comparable<Barcode>{
   private String zip;
+  private static String[] conversion = {"||:::",":::||","::|:|","::||:",":|::|",":|:|:",":||::","|:::|","|::|:","|:|::"};
 
   public Barcode(String zip){
     if (zip.length() == 5){
@@ -41,7 +42,6 @@ public class Barcode implements Comparable<Barcode>{
   }
 
   private static String convert(String str){
-    String[] conversion = {"||:::",":::||","::|:|","::||:",":|::|",":|:|:",":||::","|:::|","|::|:","|:|::"};
     return conversion[Integer.parseInt(str)];
   }
 
@@ -78,7 +78,6 @@ public class Barcode implements Comparable<Barcode>{
   }
 
   public static String codeToNumber(String code){
-    String[] conversion = {"||:::",":::||","::|:|","::||:",":|::|",":|:|:",":||::","|:::|","|::|:","|:|::"};
     for (int i=0;i<conversion.length;i++){
       if (code.equals(conversion[i])){
         return i+"";
