@@ -23,5 +23,19 @@ public class Sorts{
     }
   }
 
+  private static void swap(int[]ary,int a, int b){
+    int c =ary[a];
+    ary[a] = ary[b];
+    ary[b] = c;
+  }
 
+  public static void insertionSort(int[] data){
+    for(int i=1;i<data.length;i++){
+      int j = i;
+      while (j>0 && data[j] < data[j-1]){
+        swap(data,j,j-1);
+        j--;
+      }
+    }
+  }
 }
