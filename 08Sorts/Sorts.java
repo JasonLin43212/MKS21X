@@ -2,7 +2,7 @@ public class Sorts{
   /**EDIT THIS METHOD TO MATCH YOUR NAME
   */
   public static String name(){
-    return "01.Lin.Jason";
+    return "10.Lin.Jason";
   }
 
   /**Selection sort of an int array.
@@ -22,4 +22,6 @@ public class Sorts{
       data[smallestIndex] = tempStorage;
     }
   }
+
+
 }
