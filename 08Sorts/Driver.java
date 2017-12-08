@@ -24,6 +24,7 @@ public class Driver{
     System.out.println(input);
     //Sorts.selectionSort(a);
     Sorts.insertionSort(a);
+    //Arrays.sort(a);
     System.out.println("-----Sorted Below----");
     String output = "[";
     for (int i=0;i<a.length;i++){
