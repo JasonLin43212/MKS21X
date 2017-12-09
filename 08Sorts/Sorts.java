@@ -2,7 +2,7 @@ public class Sorts{
   /**EDIT THIS METHOD TO MATCH YOUR NAME
   */
   public static String name(){
-    return "10.Lin.Jason";
+    return "10,Lin,Jason";
   }
 
   /**Selection sort of an int array.
@@ -28,6 +28,7 @@ public class Sorts{
     ary[a] = ary[b];
     ary[b] = c;
   }
+
   /*Inefficient version
   public static void insertionSort(int[] data){
     for(int i=1;i<data.length;i++){
@@ -50,6 +51,23 @@ public class Sorts{
         j--;
       }
       data[j] = currentData;
+    }
+  }
+
+  public static void bubbleSort(int[] data) {
+    for (int stop=data.length-1;stop>0;stop--){
+      boolean hasSwapped = false;
+      for (int i=0; i<stop;i++){
+        if (data[i] > data[i+1]){
+          int c = data[i];
+          data[i] = data[i+1];
+          data[i+1] = c;
+          hasSwapped = true;
+        }
+      }
+      if (!hasSwapped) {
+        stop = 0;
+      }
     }
   }
 }
