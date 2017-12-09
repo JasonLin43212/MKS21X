@@ -28,7 +28,7 @@ public class Sorts{
     ary[a] = ary[b];
     ary[b] = c;
   }
-
+  /*Inefficient version
   public static void insertionSort(int[] data){
     for(int i=1;i<data.length;i++){
       int j = i;
@@ -36,6 +36,20 @@ public class Sorts{
         swap(data,j,j-1);
         j--;
       }
+    }
+  }
+  */
+
+  //More optimized version
+  public static void insertionSort(int[] data){
+    for (int i=1;i<data.length;i++){
+      int currentData = data[i];
+      int j = i;
+      while (j>0 && currentData < data[j-1]){
+        data[j] = data[j-1];
+        j--;
+      }
+      data[j] = currentData;
     }
   }
 }
