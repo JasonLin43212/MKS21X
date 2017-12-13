@@ -65,9 +65,11 @@ public class Sorts{
           hasSwapped = true;
         }
       }
+
       if (!hasSwapped) {
         stop = 0;
       }
+
     }
   }
 }
