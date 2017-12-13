@@ -34,10 +34,22 @@ public class TemperatureConverter extends JFrame implements ActionListener{
   public void actionPerformed(ActionEvent e){
     String s = e.getActionCommand();
     System.out.println(s);
+    if (s.equals("Convert to Fahrenheit")){
+      double newTemp = CtoF(Double.parseDouble(text.getText()));
+      text.setText(newTemp+"");
+    }
   }
 
   public static void main(String[]args){
     TemperatureConverter g = new TemperatureConverter();
     g.setVisible(true);
+  }
+
+  public static double CtoF(double celsius){
+    return (9.0/5)*celsius + 32;
+  }
+
+  public static double FtoC(double fahrenheit){
+    return (5.0/9)*(fahrenheit -32);
   }
 }
