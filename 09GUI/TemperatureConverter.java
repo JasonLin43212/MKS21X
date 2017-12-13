@@ -18,7 +18,13 @@ public class TemperatureConverter extends JFrame{
     pane = this.getContentPane();
     pane.setLayout(new FlowLayout());
 
+    text = new JTextField(20);
+    FtoCbutton = new JButton("Convert to Fahrenheit");
+    CtoFbutton = new JButton("Convert to Celsius");
 
+    pane.add(text);
+    pane.add(FtoCbutton);
+    pane.add(CtoFbutton);
   }
 
 
