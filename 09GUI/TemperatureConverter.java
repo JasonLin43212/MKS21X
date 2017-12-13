@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class TemperatureConverter extends JFrame{
+public class TemperatureConverter extends JFrame implements ActionListener{
   private Container pane;
 
   private JTextField text;
@@ -22,12 +22,19 @@ public class TemperatureConverter extends JFrame{
     FtoCbutton = new JButton("Convert to Fahrenheit");
     CtoFbutton = new JButton("Convert to Celsius");
 
+    text.addActionListener(this);
+    FtoCbutton.addActionListener(this);
+    CtoFbutton.addActionListener(this);
+
     pane.add(text);
     pane.add(FtoCbutton);
     pane.add(CtoFbutton);
   }
 
-
+  public void actionPerformed(ActionEvent e){
+    String s = e.getActionCommand();
+    System.out.println(s);
+  }
 
   public static void main(String[]args){
     TemperatureConverter g = new TemperatureConverter();
