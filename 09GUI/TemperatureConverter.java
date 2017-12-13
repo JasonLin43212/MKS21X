@@ -38,6 +38,10 @@ public class TemperatureConverter extends JFrame implements ActionListener{
       double newTemp = CtoF(Double.parseDouble(text.getText()));
       text.setText(newTemp+"");
     }
+    if (s.equals("Convert to Celsius")){
+      double newTemp = FtoC(Double.parseDouble(text.getText()));
+      text.setText(newTemp+"");
+    }
   }
 
   public static void main(String[]args){
