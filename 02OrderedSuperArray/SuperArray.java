@@ -35,7 +35,7 @@ public class SuperArray{
     for (int i=0;i<size();i++){
       str += data[i];
       if (i!=size()-1){
-        str+=",";
+        str+=", ";
       }
     }
     str+="]";

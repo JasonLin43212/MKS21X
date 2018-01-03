@@ -37,6 +37,7 @@ public class OrderedSuperArray extends SuperArray{
     return size();
   }
 
+
   public String set(int index, String element){
     throw new UnsupportedOperationException();
   }
@@ -49,20 +50,19 @@ public class OrderedSuperArray extends SuperArray{
     int end = size()-1;
     while (start != end) {
       int middle = (start + end)/2;
-      if (value.compareTo(get(middle))>0){
-        start = middle + 1;
+      if (value.compareTo(get(middle))>=0){
+        start = middle+1;
       }
-      else if (value.compareTo(get(middle))<0){
+      else if (value.compareTo(get(middle))<=0){
         end = middle;
       }
-      else {
-        return middle;
-      }
     }
-    if (value.compareTo(get(start))>0) {
+    if (value.compareTo(get(start))>=0) {
       return start + 1;
     }
-    return start;
+    else {
+      return start;
+    }
   }
 
   public int indexOfBinary(String target){
