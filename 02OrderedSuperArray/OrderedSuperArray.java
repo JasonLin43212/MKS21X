@@ -37,7 +37,6 @@ public class OrderedSuperArray extends SuperArray{
     return size();
   }
 
-
   public String set(int index, String element){
     throw new UnsupportedOperationException();
   }
@@ -53,7 +52,7 @@ public class OrderedSuperArray extends SuperArray{
       if (value.compareTo(get(middle))>=0){
         start = middle+1;
       }
-      else if (value.compareTo(get(middle))<=0){
+      else if (value.compareTo(get(middle))<0){
         end = middle;
       }
     }
